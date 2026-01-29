@@ -1,0 +1,23 @@
+{
+  "StartAt": "${steps[0].name}",
+  "States": {
+%{ for i, step in steps
+    }
+    "${step.name}": {
+      "Type": "Task",
+      "Resource": "${lambda_arns[step.lambda_key]}",
+%{ if i < length(steps) - 1
+      }
+      "Next": "${steps[i + 1].name}"
+%{ else
+      }
+      "End": true
+%{ endif
+      }
+    }%{ if i < length(steps) - 1
+    },%{ endif
+    }
+%{ endfor
+    }
+  }
+}

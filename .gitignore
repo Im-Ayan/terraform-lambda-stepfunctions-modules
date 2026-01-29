@@ -1,0 +1,13 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+terraform.tfvars
+.terraform.lock.hcl
+
+# Lambda artifacts (DO NOT COMMIT)
+*.jar
+
+# OS / Editor
+.vscode/
+.DS_Store
